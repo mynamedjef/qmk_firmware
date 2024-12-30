@@ -27,6 +27,7 @@ enum layers {
 enum custom_keycodes {
 	QMKTEST = SAFE_RANGE,
     TESTSEL,
+    MAC_AWF,
 };
 
 // clang-format off
@@ -57,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  BT_HST1,  BT_HST2,  BT_HST3,  P2P4G,    _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,  _______,  _______,
-        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,  _______,  TESTSEL,  _______,    _______,
+        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,  MAC_AWF,  TESTSEL,  _______,    _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______,  QMKTEST,  _______            ),
  };
 
@@ -109,6 +110,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 // when keycode TESTSEL is released
             }
+            return true;
+
+        case MAC_AWF:
+            const char *text =
+                "SELECT * INTO #tmp FROM active_workflows\n"
+                "SELECT workflow_position.ToString() AS workflow_pos, * FROM #tmp \n"
+                "WHERE request_id = ''\n"
+                "ORDER BY request_id, workflow_position";
+
+            if (record->event.pressed) {
+                SEND_STRING(text);
+            } else {
+
+            }
+            return true;
     }
     if (!process_record_keychron_common(keycode, record)) {
         return false;
