@@ -23,6 +23,11 @@ enum layers {
     WIN_BASE,
     WIN_FN,
 };
+
+enum custom_keycodes {
+	QMKTEST = SAFE_RANGE,
+};
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [MAC_BASE] = LAYOUT_ansi_98(
@@ -52,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,  _______,  _______,
         _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,  _______,  _______,  _______,    _______,
-        _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______,  _______,  _______            ),
+        _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______,  QMKTEST,  _______            ),
  };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -66,6 +71,15 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 
 // clang-format on
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QMKTEST:
+            if (record->event.pressed) {
+                SEND_STRING_DELAY("SELECT * FROM managed_servers where name = ''" SS_TAP(X_LEFT), 10);
+            } else {
+                // when keycode QMKTEST is released
+            }
+            return true;
+    }
     if (!process_record_keychron_common(keycode, record)) {
         return false;
     }
