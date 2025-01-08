@@ -120,7 +120,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 "ORDER BY request_id, workflow_position";
 
             if (record->event.pressed) {
-                SEND_STRING(text);
+                SEND_STRING_DELAY(text, 10);
             } else {
 
             }
