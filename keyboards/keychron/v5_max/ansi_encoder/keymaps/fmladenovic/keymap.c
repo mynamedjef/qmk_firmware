@@ -30,6 +30,16 @@ enum custom_keycodes {
     MAC_AWF,
 };
 
+enum combos {
+    RALT_BSPC,
+};
+
+const uint16_t PROGMEM ralt_bspc_combo[] = {KC_RALT, KC_BSPC, COMBO_END};
+
+combo_t key_combos[] = {
+    [RALT_BSPC] = COMBO(ralt_bspc_combo, KC_DEL),
+};
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [MAC_BASE] = LAYOUT_ansi_98(
