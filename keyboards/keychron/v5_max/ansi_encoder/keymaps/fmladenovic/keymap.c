@@ -55,17 +55,21 @@ combo_t key_combos[] = {
 
 // -------------------- Key Overrides --------------------
 
-const key_override_t ctrl_k_to_up_override    = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_K, KC_UP);
-const key_override_t ctrl_j_to_down_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_J, KC_DOWN);
-const key_override_t ctrl_h_to_left_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_H, KC_LEFT);
-const key_override_t ctrl_l_to_right_override = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_L, KC_RIGHT);
+const key_override_t ctrl_shift_k_to_up_override             = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_K, KC_UP);
+const key_override_t ctrl_shift_j_to_down_override           = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_J, KC_DOWN);
+const key_override_t ctrl_shift_h_to_left_override           = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_H, KC_LEFT);
+const key_override_t ctrl_shift_l_to_right_override          = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_L, KC_RIGHT);
+const key_override_t ctrl_shift_alt_h_to_ctrl_left_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_H, LCTL(KC_LEFT));
+const key_override_t ctrl_shift_alt_l_to_ctrl_right_override = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_L, LCTL(KC_RIGHT));
 
 // Current documentation doesn't work, trying out older guide: https://github.com/qmk/qmk_firmware/blob/eee0384167b965c60120e1222bc24c0b40cadac4/docs/feature_key_overrides.md
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &ctrl_k_to_up_override,
-    &ctrl_j_to_down_override,
-    &ctrl_h_to_left_override,
-    &ctrl_l_to_right_override,
+    &ctrl_shift_k_to_up_override,
+    &ctrl_shift_j_to_down_override,
+    &ctrl_shift_h_to_left_override,
+    &ctrl_shift_l_to_right_override,
+    &ctrl_shift_alt_h_to_ctrl_left_override,
+    &ctrl_shift_alt_l_to_ctrl_right_override,
     NULL
 };
 
