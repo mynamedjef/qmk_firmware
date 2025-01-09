@@ -24,11 +24,15 @@ enum layers {
     WIN_FN,
 };
 
+// ----------------------- Macros ------------------------
+
 enum custom_keycodes {
 	QMKTEST = SAFE_RANGE,
     TESTSEL,
     MAC_AWF,
 };
+
+// ----------------------- Combos ------------------------
 
 enum combos {
     RALT_BSPC,
@@ -39,6 +43,24 @@ const uint16_t PROGMEM ralt_bspc_combo[] = {KC_RALT, KC_BSPC, COMBO_END};
 combo_t key_combos[] = {
     [RALT_BSPC] = COMBO(ralt_bspc_combo, KC_DEL),
 };
+
+// -------------------- Key Overrides --------------------
+
+const key_override_t ctrl_k_to_up_override    = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_K, KC_UP);
+const key_override_t ctrl_j_to_down_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_J, KC_DOWN);
+const key_override_t ctrl_h_to_left_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_H, KC_LEFT);
+const key_override_t ctrl_l_to_right_override = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_L, KC_RIGHT);
+
+// Current documentation doesn't work, trying out older guide: https://github.com/qmk/qmk_firmware/blob/eee0384167b965c60120e1222bc24c0b40cadac4/docs/feature_key_overrides.md
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &ctrl_k_to_up_override,
+    &ctrl_j_to_down_override,
+    &ctrl_h_to_left_override,
+    &ctrl_l_to_right_override,
+    NULL
+};
+
+// ----------------------- Key Maps ----------------------
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
