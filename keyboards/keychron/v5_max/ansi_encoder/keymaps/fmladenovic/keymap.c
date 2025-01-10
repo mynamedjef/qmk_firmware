@@ -55,6 +55,8 @@ combo_t key_combos[] = {
 
 // -------------------- Key Overrides --------------------
 
+const key_override_t ctrl_shift_alt_k_to_home_override       = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_K, KC_HOME);
+const key_override_t ctrl_shift_alt_j_to_end_override        = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_J, KC_END);
 const key_override_t ctrl_shift_alt_h_to_ctrl_left_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_H, LCTL(KC_LEFT));
 const key_override_t ctrl_shift_alt_l_to_ctrl_right_override = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_L, LCTL(KC_RIGHT));
 const key_override_t ctrl_shift_k_to_up_override             = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_K, KC_UP);
@@ -65,6 +67,8 @@ const key_override_t ctrl_shift_l_to_right_override          = ko_make_basic(MOD
 // Current documentation doesn't work, trying out older guide: https://github.com/qmk/qmk_firmware/blob/eee0384167b965c60120e1222bc24c0b40cadac4/docs/feature_key_overrides.md
 const key_override_t **key_overrides = (const key_override_t *[]){
     // override 'ctrl+shift+alt+x = y' must be listed before 'ctrl+shift+x = z' because the former is a superset of the latter. In other case, ctrl+shift+alt+x would be mapped to alt+z.
+    &ctrl_shift_alt_k_to_home_override,
+    &ctrl_shift_alt_j_to_end_override,
     &ctrl_shift_alt_h_to_ctrl_left_override,
     &ctrl_shift_alt_l_to_ctrl_right_override,
     &ctrl_shift_k_to_up_override,
