@@ -36,21 +36,18 @@ enum custom_keycodes {
 // ----------------------- Combos ------------------------
 
 enum combos {
-    RALT_BSPC,
     RALT_DEL,
     RALT_HOME,
     RALT_END,
     SPC_BSPC,
 };
 
-const uint16_t PROGMEM combo_ralt_bspc_to_del[]  = {KC_RALT, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM combo_ralt_del_to_ins[]   = {KC_RALT, KC_DEL, COMBO_END};
 const uint16_t PROGMEM combo_ralt_home_to_pgup[] = {KC_RALT, KC_HOME, COMBO_END};
 const uint16_t PROGMEM combo_ralt_end_to_pgdn[]  = {KC_RALT, KC_END, COMBO_END};
 const uint16_t PROGMEM combo_spc_bspc_to_del[]   = {KC_SPC, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
-    [RALT_BSPC] = COMBO(combo_ralt_bspc_to_del, KC_DEL),
     [RALT_DEL]  = COMBO(combo_ralt_del_to_ins, KC_INS),
     [RALT_HOME] = COMBO(combo_ralt_home_to_pgup, KC_PGUP),
     [RALT_END]  = COMBO(combo_ralt_end_to_pgdn, KC_PGDN),
