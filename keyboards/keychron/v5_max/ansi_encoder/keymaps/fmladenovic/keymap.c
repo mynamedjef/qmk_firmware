@@ -27,7 +27,7 @@ enum layers {
 // ----------------------- Macros ------------------------
 
 enum custom_keycodes {
-	QMKTEST = SAFE_RANGE,
+    QMKTEST = SAFE_RANGE,
     TESTSEL,
     MAC_AWF,
 };
