@@ -36,46 +36,25 @@ enum custom_keycodes {
 // ----------------------- Combos ------------------------
 
 enum combos {
-    RALT_DEL,
-    RALT_HOME,
-    RALT_END,
     SPC_BSPC,
 };
 
-const uint16_t PROGMEM combo_ralt_del_to_ins[]   = {KC_RALT, KC_DEL, COMBO_END};
-const uint16_t PROGMEM combo_ralt_home_to_pgup[] = {KC_RALT, KC_HOME, COMBO_END};
-const uint16_t PROGMEM combo_ralt_end_to_pgdn[]  = {KC_RALT, KC_END, COMBO_END};
 const uint16_t PROGMEM combo_spc_bspc_to_del[]   = {KC_SPC, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
-    [RALT_DEL]  = COMBO(combo_ralt_del_to_ins, KC_INS),
-    [RALT_HOME] = COMBO(combo_ralt_home_to_pgup, KC_PGUP),
-    [RALT_END]  = COMBO(combo_ralt_end_to_pgdn, KC_PGDN),
     [SPC_BSPC]  = COMBO(combo_spc_bspc_to_del, KC_DEL),
 };
 
 // -------------------- Key Overrides --------------------
 
-const key_override_t ctrl_shift_alt_k_to_home_override       = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_K, KC_HOME);
-const key_override_t ctrl_shift_alt_j_to_end_override        = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_J, KC_END);
-const key_override_t ctrl_shift_alt_h_to_ctrl_left_override  = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_H, LCTL(KC_LEFT));
-const key_override_t ctrl_shift_alt_l_to_ctrl_right_override = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT | MOD_MASK_ALT, KC_L, LCTL(KC_RIGHT));
-const key_override_t ctrl_shift_k_to_up_override             = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_K, KC_UP);
-const key_override_t ctrl_shift_j_to_down_override           = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_J, KC_DOWN);
-const key_override_t ctrl_shift_h_to_left_override           = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_H, KC_LEFT);
-const key_override_t ctrl_shift_l_to_right_override          = ko_make_basic(MOD_MASK_CTRL | MOD_MASK_SHIFT, KC_L, KC_RIGHT);
+const key_override_t override_ctrl_up_to_home  = ko_make_basic(MOD_MASK_CTRL, KC_UP, KC_HOME);
+const key_override_t override_ctrl_down_to_end = ko_make_basic(MOD_MASK_CTRL, KC_DOWN, KC_END);
 
 // Current documentation doesn't work, trying out older guide: https://github.com/qmk/qmk_firmware/blob/eee0384167b965c60120e1222bc24c0b40cadac4/docs/feature_key_overrides.md
 const key_override_t **key_overrides = (const key_override_t *[]){
     // override 'ctrl+shift+alt+x = y' must be listed before 'ctrl+shift+x = z' because the former is a superset of the latter. In other case, ctrl+shift+alt+x would be mapped to alt+z.
-    &ctrl_shift_alt_k_to_home_override,
-    &ctrl_shift_alt_j_to_end_override,
-    &ctrl_shift_alt_h_to_ctrl_left_override,
-    &ctrl_shift_alt_l_to_ctrl_right_override,
-    &ctrl_shift_k_to_up_override,
-    &ctrl_shift_j_to_down_override,
-    &ctrl_shift_h_to_left_override,
-    &ctrl_shift_l_to_right_override,
+    &override_ctrl_up_to_home,
+    &override_ctrl_down_to_end,
     NULL
 };
 
@@ -114,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,  MAC_AWF,  TESTSEL,  _______,    _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______,  QMKTEST,  _______            ),
     [MY_LAYER_0] = LAYOUT_ansi_98(
-        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
+        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            KC_INS,   KC_PGUP,  KC_PGDN,    _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
         _______,  _______,  _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,              _______,            _______,  _______,  _______,
