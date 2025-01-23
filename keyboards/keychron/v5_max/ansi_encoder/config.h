@@ -16,6 +16,9 @@
 
 #pragma once
 
+// enables QK_MAKE
+#define ENABLE_COMPILE_KEYCODE
+
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
 #    define DRIVER_COUNT 2
