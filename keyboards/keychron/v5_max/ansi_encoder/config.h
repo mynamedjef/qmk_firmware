@@ -19,6 +19,13 @@
 // enables QK_MAKE
 #define ENABLE_COMPILE_KEYCODE
 
+// leader timeout
+#define LEADER_TIMEOUT 250
+// every key resets leader timeout
+#define LEADER_PER_KEY_TIMING
+// disable timeout just for the leader key
+#define LEADER_NO_TIMEOUT
+
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
 #    define DRIVER_COUNT 2
