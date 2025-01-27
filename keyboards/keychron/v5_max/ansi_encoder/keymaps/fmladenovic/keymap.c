@@ -200,7 +200,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             const char *text =
                 "SELECT * INTO #tmp FROM active_workflows\n"
                 "SELECT workflow_position.ToString() AS workflow_pos, * FROM #tmp \n"
-                "WHERE request_id = ''\n"
+                "WHERE request_id = '" SS_LCTL("v") "'\n"
                 "ORDER BY request_id, workflow_position";
 
             if (record->event.pressed) {
