@@ -30,7 +30,6 @@ enum layers {
 
 enum custom_keycodes {
     QMKTEST = SAFE_RANGE,
-    TESTSEL,
     MAC_AWF,
     SPACE4,
 };
@@ -172,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  BT_HST1,  BT_HST2,  BT_HST3,  P2P4G,    _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  KC_DEL,             _______,  _______,  _______,    _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            _______,  _______,  _______,    _______,
         KC_CAPS,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,  _______,  _______,
-        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,  MAC_AWF,  TESTSEL,  _______,    _______,
+        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,  _______,  MAC_AWF,  _______,  _______,    _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,    _______,  _______,  _______,  _______,  QMKTEST,  _______            ),
     [MY_LAYER_0] = LAYOUT_ansi_98(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,            KC_INS,   KC_PGUP,  KC_PGDN,    _______,
@@ -201,44 +200,14 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
-int selection = -1;
-int last_selected = 0;
-const char* options[] = {"source_managed_server_name", "target_managed_server_name", "source_managed_database_name", "target_managed_database_name", "request_id"};
-
 // clang-format on
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (keycode != TESTSEL) {
-        selection = -1;
-    }
-
     switch (keycode) {
         case QMKTEST:
             if (record->event.pressed) {
                 SEND_STRING_DELAY("SELECT * FROM managed_servers where name = ''" SS_TAP(X_LEFT), 10);
             } else {
                 // when keycode QMKTEST is released
-            }
-            return true;
-
-        // selection test. pressing the key will cycle through the options. last selected option will be the first next time the key is pressed
-        case TESTSEL:
-            if (record->event.pressed) {
-                if (selection == -1) {
-                    selection = last_selected;
-
-                    SEND_STRING(options[selection]);
-                } else {
-                    for (uint8_t i = 0; i < strlen(options[selection]); i++) {
-                        SEND_STRING(SS_TAP(X_BSPC));
-                    }
-
-                    selection = (selection + 1) % (sizeof(options) / sizeof(options[0]));
-                    SEND_STRING(options[selection]);
-
-                    last_selected = selection;
-                }
-            } else {
-                // when keycode TESTSEL is released
             }
             return true;
 
