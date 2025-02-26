@@ -19,6 +19,9 @@
 // enables QK_MAKE
 #define ENABLE_COMPILE_KEYCODE
 
+// disable macro nesting
+#define DYNAMIC_MACRO_NO_NESTING
+
 // leader timeout
 #define LEADER_TIMEOUT 250
 // every key resets leader timeout
