@@ -34,18 +34,6 @@ enum custom_keycodes {
     SPACE4,
 };
 
-// ----------------------- Combos ------------------------
-
-enum combos {
-    SPC_BSPC,
-};
-
-const uint16_t PROGMEM combo_spc_bspc_to_del[]   = {KC_SPC, KC_BSPC, COMBO_END};
-
-combo_t key_combos[] = {
-    [SPC_BSPC]  = COMBO(combo_spc_bspc_to_del, KC_DEL),
-};
-
 // -------------------- Key Overrides --------------------
 
 const key_override_t override_gui_shift_h_to_move_window_left = ko_make_basic(MOD_MASK_GUI | MOD_MASK_SHIFT, KC_H, LSG(KC_LEFT)); // LSG() = left shift + gui mod
