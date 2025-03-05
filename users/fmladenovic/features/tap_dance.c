@@ -1,5 +1,6 @@
 
 #include "tap_dance.h"
+#include "../definitions/layers.h"
 
 typedef struct {
     bool is_press_action;

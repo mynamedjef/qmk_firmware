@@ -18,6 +18,15 @@
 #include "fmladenovic.h"
 #include "keychron_common.h"
 
+enum layers {
+    MAC_BASE,
+    MAC_FN,
+    WIN_BASE,
+    WIN_FN,
+    MY_LAYER_0,
+    MY_LAYER_1,
+};
+
 const int CLEFT = LCTL(KC_LEFT);
 const int CRIGHT = LCTL(KC_RGHT);
 const int TD_CAPS = TD(CAPS_LYRS);
