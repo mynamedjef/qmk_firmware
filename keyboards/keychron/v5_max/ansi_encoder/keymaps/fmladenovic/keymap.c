@@ -15,17 +15,12 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "fmladenovic.h"
 #include "keychron_common.h"
 
-enum layers {
-    MAC_BASE,
-    MAC_FN,
-    WIN_BASE,
-    WIN_FN,
-    MY_LAYER_0,
-    MY_LAYER_1,
-};
+#include "definitions/macros.h"
+#include "definitions/layers.h"
+
+#include "features/tap_dance.h"
 
 const int CLEFT = LCTL(KC_LEFT);
 const int CRIGHT = LCTL(KC_RGHT);

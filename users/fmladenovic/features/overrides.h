@@ -6,5 +6,5 @@ enum key_overrides {
     KEY_OVERRIDE_COUNT,
 };
 
-extern const key_override_t *key_overrides[KEY_OVERRIDE_COUNT];
+extern const key_override_t **key_overrides;
 

@@ -1,4 +1,6 @@
 
+#include "quantum.h"
+
 #include "tap_dance.h"
 #include "../definitions/layers.h"
 

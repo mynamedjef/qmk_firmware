@@ -1,4 +1,5 @@
 
+#pragma once
 
 // this has to be changed in keymap file aswell
 enum layers {
