@@ -2,11 +2,11 @@
 #pragma once
 
 enum layers {
-    MAC_BASE,
-    MAC_FN,
-    WIN_BASE,
-    WIN_FN,
-    MY_LAYER_0,
-    MY_LAYER_1,
+    SD_BASE,
+    SD_FN,
+    FM_BASE,
+    FM_FN,
+    NAVLAYER,
+    MISCLAYER,
 };
 

@@ -42,13 +42,13 @@ void ql_finished(tap_dance_state_t *state, void *user_data) {
             }
             break;
         case TD_SINGLE_HOLD:
-            layer_on(MY_LAYER_0);
+            layer_on(NAVLAYER);
             break;
         case TD_DOUBLE_TAP:
             tap_code(KC_COMMA);
             break;
         case TD_DOUBLE_HOLD:
-            layer_on(MY_LAYER_1);
+            layer_on(MISCLAYER);
             break;
         default:
             break;
@@ -58,9 +58,9 @@ void ql_finished(tap_dance_state_t *state, void *user_data) {
 void ql_reset(tap_dance_state_t *state, void *user_data) {
     // if the key was held down and now is released then switch off the layer
     if (ql_tap_state.state == TD_SINGLE_HOLD) {
-        layer_off(MY_LAYER_0);
+        layer_off(NAVLAYER);
     } else if (ql_tap_state.state == TD_DOUBLE_HOLD) {
-        layer_off(MY_LAYER_1);
+        layer_off(MISCLAYER);
     }
     ql_tap_state.state = TD_NONE;
 }
