@@ -19,12 +19,9 @@
 
 #include "definitions/macros.h"
 #include "definitions/layers.h"
+#include "definitions/keycodes.h"
 
 #include "features/tap_dance.h"
-
-const int CLEFT = LCTL(KC_LEFT);
-const int CRIGHT = LCTL(KC_RGHT);
-const int TD_CAPS = TD(CAPS_LYRS);
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

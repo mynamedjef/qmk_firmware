@@ -1,6 +1,8 @@
 
 #pragma once
 
+#define TD_CAPS TD(CAPS_LYRS)
+
 typedef enum {
     TD_NONE,
     TD_UNKNOWN,
