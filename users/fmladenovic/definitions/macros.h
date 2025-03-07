@@ -2,8 +2,7 @@
 #pragma once
 
 enum custom_keycodes {
-    QMKTEST = SAFE_RANGE,
-    MAC_AWF,
+    MAC_AWF = SAFE_RANGE,
     SPACE4,
 };
 

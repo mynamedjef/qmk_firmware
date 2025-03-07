@@ -15,14 +15,6 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 // clang-format on
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case QMKTEST:
-            if (record->event.pressed) {
-                SEND_STRING_DELAY("SELECT * FROM managed_servers where name = ''" SS_TAP(X_LEFT), 10);
-            } else {
-                // when keycode QMKTEST is released
-            }
-            return true;
-
         case MAC_AWF:
             const char *text =
                 "SELECT * INTO #tmp FROM active_workflows\n"
